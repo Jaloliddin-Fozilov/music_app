@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
+import '../models/list_model.dart';
+
 class PlayerPage extends StatefulWidget {
   @override
   State<PlayerPage> createState() => _PlayerPageState();
+  List<ListModeli> royxatlar = ListData().royxat;
 }
 
 class _PlayerPageState extends State<PlayerPage> {
-  Duration progress = Duration(milliseconds: 1000);
-  Duration musicTime = Duration(milliseconds: 1000);
-  Duration total = Duration(milliseconds: 9999);
+  Duration progress = Duration(milliseconds: 150000);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,8 +25,8 @@ class _PlayerPageState extends State<PlayerPage> {
                   bottomLeft: Radius.circular(250),
                   bottomRight: Radius.circular(250),
                 ),
-                child: Image.asset(
-                  "assets/images/image.jpg",
+                child: Image.network(
+                  "${widget.royxatlar[0].image}",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -81,11 +82,11 @@ class _PlayerPageState extends State<PlayerPage> {
             ],
           ),
           Container(
-            margin: EdgeInsets.only(top: 50),
+            margin: EdgeInsets.only(top: 50, left: 40, right: 40),
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +99,7 @@ class _PlayerPageState extends State<PlayerPage> {
                               fontSize: 10),
                         ),
                         Text(
-                          "Dream in City",
+                          "${widget.royxatlar[0].musician}",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -116,7 +117,7 @@ class _PlayerPageState extends State<PlayerPage> {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
@@ -167,14 +168,14 @@ class _PlayerPageState extends State<PlayerPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "BTS",
+                        "${widget.royxatlar[0].musician}",
                         style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,
                             fontSize: 10),
                       ),
                       Text(
-                        "All Night",
+                        "${widget.royxatlar[0].name}",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -195,8 +196,7 @@ class _PlayerPageState extends State<PlayerPage> {
                 margin: EdgeInsets.only(left: 55, right: 70, top: 10),
                 child: ProgressBar(
                   progress: progress,
-                  buffered: musicTime,
-                  total: total,
+                  total: widget.royxatlar[0].total,
                   progressBarColor: Colors.red,
                   baseBarColor: Colors.red.withOpacity(0.24),
                   bufferedBarColor: Colors.red.withOpacity(0.24),

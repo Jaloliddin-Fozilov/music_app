@@ -2,8 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
+import '../models/list_model.dart';
+import 'list_tile.dart';
+
 class HomePage extends StatefulWidget {
   final Function showPlayerPage;
+
+  ListData royxatlar = ListData();
 
   HomePage(this.showPlayerPage);
 
@@ -61,36 +66,12 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () {
-                        widget.showPlayerPage(context);
-                      },
-                      leading: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.play_circle_outlined,
-                          size: 32,
-                        ),
-                      ),
-                      title: Text(
-                        "Three Days Grace",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black54,
-                        ),
-                      ),
-                      subtitle: Text(
-                        "Pain",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      trailing: Text("0:0"),
+                    return ListTileRoyxat(
+                      widget.royxatlar.royxat[index],
+                      widget.showPlayerPage,
                     );
                   },
-                  itemCount: 10,
+                  itemCount: widget.royxatlar.royxat.length,
                 ),
               ),
               Container(

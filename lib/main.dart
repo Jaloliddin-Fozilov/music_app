@@ -4,14 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 import './widgets/UI/home_page.dart';
 import './widgets/UI/player_page.dart';
+import './widgets/models/list_model.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
