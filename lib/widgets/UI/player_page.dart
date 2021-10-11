@@ -6,7 +6,9 @@ import '../models/list_model.dart';
 class PlayerPage extends StatefulWidget {
   @override
   State<PlayerPage> createState() => _PlayerPageState();
-  List<ListModeli> royxatlar = ListData().royxat;
+  final List<ListModeli> royxatlar;
+  final int id;
+  PlayerPage(this.royxatlar, this.id);
 }
 
 class _PlayerPageState extends State<PlayerPage> {
@@ -26,7 +28,7 @@ class _PlayerPageState extends State<PlayerPage> {
                   bottomRight: Radius.circular(250),
                 ),
                 child: Image.network(
-                  "${widget.royxatlar[0].image}",
+                  "${widget.royxatlar[widget.id].image}",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -99,7 +101,7 @@ class _PlayerPageState extends State<PlayerPage> {
                               fontSize: 10),
                         ),
                         Text(
-                          "${widget.royxatlar[0].musician}",
+                          "${widget.royxatlar[widget.id].name}",
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -168,14 +170,14 @@ class _PlayerPageState extends State<PlayerPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "${widget.royxatlar[0].musician}",
+                        "${widget.royxatlar[widget.id].musician}",
                         style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,
                             fontSize: 10),
                       ),
                       Text(
-                        "${widget.royxatlar[0].name}",
+                        "${widget.royxatlar[widget.id].name}",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -196,7 +198,7 @@ class _PlayerPageState extends State<PlayerPage> {
                 margin: EdgeInsets.only(left: 55, right: 70, top: 10),
                 child: ProgressBar(
                   progress: progress,
-                  total: widget.royxatlar[0].total,
+                  total: widget.royxatlar[widget.id].total,
                   progressBarColor: Colors.red,
                   baseBarColor: Colors.red.withOpacity(0.24),
                   bufferedBarColor: Colors.red.withOpacity(0.24),
@@ -206,7 +208,9 @@ class _PlayerPageState extends State<PlayerPage> {
                   barHeight: 2.0,
                   thumbRadius: 6.0,
                   onSeek: (duration) {
-                    progress = duration;
+                    setState(() {
+                      progress = duration;
+                    });
                   },
                 ),
               )

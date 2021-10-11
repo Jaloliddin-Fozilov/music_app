@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/widgets/models/list_model.dart';
 
-import 'home_page.dart';
-
 class ListTileRoyxat extends StatelessWidget {
   final ListModeli royxatlar;
   final Function showPlayerPage;
@@ -13,7 +11,7 @@ class ListTileRoyxat extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        showPlayerPage(context);
+        showPlayerPage(context, royxatlar.id);
       },
       leading: IconButton(
         onPressed: () {},

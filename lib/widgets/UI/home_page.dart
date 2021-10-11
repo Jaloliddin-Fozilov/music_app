@@ -8,9 +8,9 @@ import 'list_tile.dart';
 class HomePage extends StatefulWidget {
   final Function showPlayerPage;
 
-  ListData royxatlar = ListData();
+  final List<ListModeli> royxatlar;
 
-  HomePage(this.showPlayerPage);
+  HomePage(this.showPlayerPage, this.royxatlar);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -67,11 +67,11 @@ class _HomePageState extends State<HomePage> {
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     return ListTileRoyxat(
-                      widget.royxatlar.royxat[index],
+                      widget.royxatlar[index],
                       widget.showPlayerPage,
                     );
                   },
-                  itemCount: widget.royxatlar.royxat.length,
+                  itemCount: widget.royxatlar.length,
                 ),
               ),
               Container(

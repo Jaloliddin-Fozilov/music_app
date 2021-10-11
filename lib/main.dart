@@ -13,15 +13,17 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
+
+  List<ListModeli> royxatlar = ListData().royxat;
 }
 
 class _MyAppState extends State<MyApp> {
-  void showPlayerPage(BuildContext context) {
+  void showPlayerPage(BuildContext context, int id) {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
       builder: (ctx) {
-        return PlayerPage();
+        return PlayerPage(widget.royxatlar, id);
       },
     );
   }
@@ -33,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         fontFamily: GoogleFonts.raleway().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(showPlayerPage),
+      home: HomePage(showPlayerPage, widget.royxatlar),
     );
   }
 }

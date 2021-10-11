@@ -1,4 +1,5 @@
 class ListModeli {
+  final int id;
   final String name;
   final String musician;
   final String image;
@@ -6,6 +7,7 @@ class ListModeli {
   final Duration total;
 
   ListModeli({
+    required this.id,
     required this.name,
     required this.musician,
     required this.image,
@@ -15,8 +17,9 @@ class ListModeli {
 }
 
 class ListData {
-  List<ListModeli> royxat = [
+  List<ListModeli> _royxat = [
     ListModeli(
+      id: 0,
       name: "Dernière danse",
       musician: "Indila",
       image:
@@ -25,6 +28,7 @@ class ListData {
       total: Duration(milliseconds: 335000),
     ),
     ListModeli(
+      id: 1,
       name: "Onam",
       musician: "Sardor Rahimxon",
       image:
@@ -33,6 +37,7 @@ class ListData {
       total: Duration(milliseconds: 341000),
     ),
     ListModeli(
+      id: 2,
       name: "Javob ber",
       musician: "Rayhon",
       image:
@@ -41,4 +46,8 @@ class ListData {
       total: Duration(milliseconds: 335000),
     ),
   ];
+
+  List<ListModeli> get royxat {
+    return _royxat;
+  }
 }
