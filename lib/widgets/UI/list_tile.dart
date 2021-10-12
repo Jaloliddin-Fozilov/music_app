@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/widgets/models/list_model.dart';
 
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+
 class ListTileRoyxat extends StatelessWidget {
   final ListModeli royxatlar;
   final Function showPlayerPage;
@@ -35,7 +37,8 @@ class ListTileRoyxat extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      trailing: Text("${royxatlar.total}"),
+      trailing: Text(
+          "${(royxatlar.total.inSeconds / 60).toInt()}:${(royxatlar.total.inSeconds % 60)}"),
     );
   }
 }
