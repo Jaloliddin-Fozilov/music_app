@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     IconButton(
                       onPressed: () {
-                        widget.showPlayerPage(context);
+                        widget.showPlayerPage(context, 0);
                       },
                       icon: Icon(
                         Icons.arrow_drop_down_circle_outlined,
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     IconButton(
                       onPressed: () {
-                        widget.showPlayerPage(context);
+                        widget.showPlayerPage(context, 0);
                       },
                       icon: Icon(Icons.arrow_circle_up,
                           color: Colors.white, size: 24),
